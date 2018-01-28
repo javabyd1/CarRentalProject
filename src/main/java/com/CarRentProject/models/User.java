@@ -1,8 +1,15 @@
 package com.CarRentProject.models;
 
 
+import javax.persistence.*;
 
+@Entity
+@Table
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String name;
     private String lastname;
     private long PESEL;
@@ -10,10 +17,19 @@ public class User {
     public User() {
     }
 
-    public User(String name, String lastname, long PESEL) {
+    public User(int id, String name, String lastname, long PESEL) {
+        this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.PESEL = PESEL;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
