@@ -1,34 +1,33 @@
 package com.CarRentProject.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import javax.persistence.*;
-
-@Entity
-@Table
+@Entity @Table(name="users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     private String name;
     private String lastname;
-    private long PESEL;
 
     public User() {
     }
 
-    public User(int id, String name, String lastname, long PESEL) {
-        this.id = id;
+    public User(String name, String lastname) {
         this.name = name;
         this.lastname = lastname;
-        this.PESEL = PESEL;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -46,13 +45,5 @@ public class User {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
-    }
-
-    public long getPESEL() {
-        return PESEL;
-    }
-
-    public void setPESEL(long PESEL) {
-        this.PESEL = PESEL;
     }
 }
