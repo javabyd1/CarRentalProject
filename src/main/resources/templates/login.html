@@ -13,9 +13,9 @@
     <h1>Zaloguj sie</h1>
     <form action="#" th:action="@{/login}" th:object="${user}" method="post">
         <label>login</label>
-        <p><input type="text" th:field="*{login}" /></p>
+        <p><input type="text" th:field="*{name}" /></p>
         <label>haslo</label>
-        <p><input type="text" th:field="*{password}" /></p>
+        <p><input type="text" th:field="*{lastname}" /></p>
         <p><input type="submit" value="Login" /></p>
     </form>
 </div>
