@@ -12,7 +12,6 @@ public class User {
     private int id;
     private String name;
     private String lastname;
-    private long PESEL;
 
     public User() {
     }
@@ -21,7 +20,6 @@ public class User {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
-        this.PESEL = PESEL;
     }
 
     public int getId() {
@@ -48,11 +46,4 @@ public class User {
         this.lastname = lastname;
     }
 
-    public long getPESEL() {
-        return PESEL;
-    }
-
-    public void setPESEL(long PESEL) {
-        this.PESEL = PESEL;
-    }
 }

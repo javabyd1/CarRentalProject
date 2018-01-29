@@ -1,13 +1,18 @@
-package com.CarRentProject.CarRentProject;
+package com.CarRentProject;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CarRentProjectApplication  {
+public class CarRentProjectApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CarRentProjectApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+
 	}
 }
