@@ -15,4 +15,11 @@ public class WebController {
         return mav;
     }
 
+    @GetMapping("/register")
+    public ModelAndView showRegisterPage() {
+        ModelAndView mav = new ModelAndView("register");
+        mav.addObject("user", new User() );
+        return mav;
+    }
+
 }

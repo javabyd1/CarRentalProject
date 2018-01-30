@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <h1>Register new user</h1>
+    <form action="#" th:action="@{/register}" th:object="${user}" method="post">
+        <label>First name: </label>
+        <p><input type="text" th:field="*{name}" /></p>
+        <label>Last name: </label>
+        <p><input type="text" th:field="*{lastname}" /></p>
+        <label>Login: </label>
+        <p><input type="text" th:field="*{name}" /></p>
+        <label>Password: </label>
+        <p><input type="text" th:field="*{lastname}" /></p>
+        <p><input type="submit" value="Register" /></p>
+    </form>
+</div>
+</body>
+</html>
