@@ -20,7 +20,7 @@ public class CarRentProjectApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		User user = new User("H.P.", "Lovecraft");
+		User user = new User();
 		usersService.saveUser(user);
 
 	}
