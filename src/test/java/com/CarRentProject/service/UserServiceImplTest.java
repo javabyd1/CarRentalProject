@@ -29,4 +29,23 @@ public class UserServiceImplTest {
         //then
         BDDMockito.then(userRepository).should().save(user);
     }
+
+    @Test
+    public void shouldGetListOfAllUsers(){
+        //given
+
+
+    }
+
+    @Test
+    public void shouldGetUserByName(){
+        //given
+        User user = new User("Andrzej", "Kowalski");
+
+        //when
+        usersService.getUsersByName("Andrzej");
+
+        //then
+        BDDMockito.then(userRepository).should().findByName("Andrzej");
+    }
 }
