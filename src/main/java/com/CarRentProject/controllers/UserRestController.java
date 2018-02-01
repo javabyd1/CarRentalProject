@@ -1,4 +1,4 @@
-package com.CarRentProject.RestController;
+package com.CarRentProject.controllers;
 
 import com.CarRentProject.models.User;
 import com.CarRentProject.service.UsersServiceImpl;

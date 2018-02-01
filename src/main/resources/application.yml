@@ -1,0 +1,20 @@
+# H2
+spring:
+  h2.console:
+    enabled: true
+    path: /h2
+
+# Datasource
+  datasource:
+    url: jdbc:h2:mem:CRP
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
+
+# Enable spring data repos
+  data.jpa.repositories.enabled: true
