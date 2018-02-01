@@ -1,9 +1,15 @@
 package com.CarRentProject.models;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-@Table (name = "car")
+@Table(name = "car")
 public class Car {
 
     @Id
@@ -15,7 +21,7 @@ public class Car {
     private String model;
     private int yearOfProduction;
     private int priceRentPerDay;
-    private boolean ifRented;
+    private boolean isRented;
 
     @ManyToOne
     private User user;
@@ -23,12 +29,12 @@ public class Car {
     public Car() {
     }
 
-    public Car(String brand, String model, int yearOfProduction, int priceRentPerDay, boolean ifRented) {
+    public Car(String brand, String model, int yearOfProduction, int priceRentPerDay, boolean isRented) {
         this.brand = brand;
         this.model = model;
         this.yearOfProduction = yearOfProduction;
         this.priceRentPerDay = priceRentPerDay;
-        this.ifRented = ifRented;
+        this.isRented = isRented;
     }
 
     public int getId() {
@@ -71,12 +77,12 @@ public class Car {
         this.priceRentPerDay = priceRentPerDay;
     }
 
-    public boolean isIfRented() {
-        return ifRented;
+    public boolean isRented() {
+        return isRented;
     }
 
-    public void setIfRented(boolean ifRented) {
-        this.ifRented = ifRented;
+    public void setRented(boolean rented) {
+        this.isRented = rented;
     }
 
     public User getUser() {
