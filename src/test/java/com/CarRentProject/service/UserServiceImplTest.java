@@ -1,32 +1,32 @@
 package com.CarRentProject.service;
 
-import com.CarRentProject.interfaces.UserService;
+import com.CarRentProject.models.User;
 import com.CarRentProject.repository.UserRepository;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.mockito.BDDMockito;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
-@RunWith(SpringRunner.class)
-public class UserServiceImplTest  {
+@RunWith(MockitoJUnitRunner.class)
+public class UserServiceImplTest {
 
-    @TestConfiguration
-    static class UserServiceImplTestContextConfiguration{
-
-        @Bean
-        public UserService userService() {
-            return new UsersServiceImpl();
-        }
-    }
-
-    @Autowired
-    private UserService userService;
-
-    @MockBean
+    @Mock
     private UserRepository userRepository;
 
+    @InjectMocks
+    private UsersServiceImpl usersService;
 
+    @Test
+    public void shouldSaveUserInRepository() {
+        //given
+        User user = new User();
 
+        //when
+        usersService.saveUser(user);
+
+        //then
+        BDDMockito.then(userRepository).should().save(user);
+    }
 }
