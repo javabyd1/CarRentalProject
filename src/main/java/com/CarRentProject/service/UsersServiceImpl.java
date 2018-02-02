@@ -28,4 +28,11 @@ public class UsersServiceImpl implements UserService {
     public User getUsersByName(String name) {
         return userRepository.findByName(name);
     }
+
+    @Override
+    public User getUserByLastName(String lastname){return  userRepository.findByLastname(lastname);}
+
+
 }
+
+
