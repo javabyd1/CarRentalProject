@@ -30,7 +30,19 @@ public class UsersServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByLastName(String lastname){return  userRepository.findByLastname(lastname);}
+    public User getUserByLastName(String lastname) {
+        return userRepository.findByLastname(lastname);
+    }
+
+    @Override
+    public User getUserByLoginAndPassword(String login, String password) {
+        User loggedUser = null;
+        loggedUser = userRepository.findByUserLoginAndPassword(login, password);
+        if (loggedUser != null) {
+            return loggedUser;
+        }
+        return loggedUser;
+    }
 
 
 }
