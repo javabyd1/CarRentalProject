@@ -1,5 +1,6 @@
 package com.CarRentProject.controllers;
 
+import com.CarRentProject.models.Car;
 import com.CarRentProject.models.User;
 import com.CarRentProject.service.UsersServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +21,14 @@ public class WebController {
     @GetMapping("/login")
     public ModelAndView showLoginPage() {
         ModelAndView mav = new ModelAndView("login");
-        mav.addObject("user", new User() );
+        mav.addObject("user", new User());
         return mav;
     }
 
     @GetMapping("/register")
     public ModelAndView showRegisterPage() {
         ModelAndView mav = new ModelAndView("register");
-        mav.addObject("user", new User() );
+        mav.addObject("user", new User());
         return mav;
     }
 
@@ -37,4 +38,10 @@ public class WebController {
         return "redirect:/users";
     }
 
+    @GetMapping("/carsForRent")
+    public ModelAndView showListOfCarsForRent() {
+        ModelAndView modelAndView = new ModelAndView("carsForRent");
+        modelAndView.addObject("car", new Car());
+        return modelAndView;
+    }
 }
