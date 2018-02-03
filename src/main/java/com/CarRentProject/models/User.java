@@ -13,6 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Set;
 
@@ -32,6 +33,9 @@ public class User {
     private String password;
     private int active;
 
+    @NotNull
+    private String userLogin;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -44,13 +48,21 @@ public class User {
     public User() {
     }
 
-    public User(String name, String lastName, String password, int active, Set<Roles> rolesSet, List<Car> listCar) {
+    public User(String name, String lastName, String password, int active, Set<Roles> rolesSet, List<Car> listCar, String userLogin) {
         this.name = name;
         this.lastname = lastName;
         this.password = password;
         this.active = active;
         this.rolesSet = rolesSet;
         this.listCar = listCar;
+        this.userLogin = userLogin;
+    }
+
+    public User(String name, String lastname, String password, String userLogin) {
+        this.name = name;
+        this.lastname = lastname;
+        this.password = password;
+        this.userLogin = userLogin;
     }
 
     public Long getId() {
@@ -107,5 +119,13 @@ public class User {
 
     public void setListCar(List<Car> listCar) {
         this.listCar = listCar;
+    }
+
+    public String getUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(String userLogin) {
+        this.userLogin = userLogin;
     }
 }

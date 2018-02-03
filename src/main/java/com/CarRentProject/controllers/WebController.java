@@ -44,17 +44,22 @@ public class WebController {
         return "redirect:/users";
     }
 
-    @GetMapping("/carsForRent")
-    public ModelAndView showListOfCarsForRent() {
-        ModelAndView modelAndView = new ModelAndView("carsForRent");
-        modelAndView.addObject("car", new Car());
-        return modelAndView;
-    }
+//    @GetMapping("/carsForRent")
+//    public ModelAndView showListOfCarsForRent() {
+//        ModelAndView modelAndView = new ModelAndView("carsForRent");
+//        modelAndView.addObject("car", new Car());
+//        return modelAndView;
+   // }
 
-    @RequestMapping(value = "car", method = RequestMethod.GET)
+    @RequestMapping(value = "cars", method = RequestMethod.GET)
     public ModelAndView cars() {
         ModelAndView mav = new ModelAndView("cars");
         mav.addObject("cars", carsService.getAllCars());
         return mav;
+    }
+
+    @PostMapping(value = "/login")
+    public User login(@ModelAttribute("user") @Valid User user){
+
     }
 }

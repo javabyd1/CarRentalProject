@@ -40,7 +40,7 @@ public class UserServiceImplTest {
     @Test
     public void shouldGetUserByName(){
         //given
-        User user = new User("Andrzej", "Kowalski");
+        User user = new User();
 
         //when
         usersService.getUsersByName("Andrzej");
