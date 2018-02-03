@@ -32,7 +32,12 @@ public class UserRestControllerTest {
     @Test
     public void shouldGetUsersList() throws Exception {
 
-        User newUser = new User("Adam", "Kowalski", "adamkowalski", "AdamK");
+
+       
+
+        User newUser = new User();
+      
+
         List<User> allUsers = Arrays.asList(newUser);
 
         given(usersService.getAllUsers()).willReturn(allUsers);
