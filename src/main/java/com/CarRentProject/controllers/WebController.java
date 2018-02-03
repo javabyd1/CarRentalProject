@@ -1,6 +1,5 @@
 package com.CarRentProject.controllers;
 
-import com.CarRentProject.models.Car;
 import com.CarRentProject.models.User;
 import com.CarRentProject.service.CarServiceImpl;
 import com.CarRentProject.service.UsersServiceImpl;
@@ -58,8 +57,4 @@ public class WebController {
         return mav;
     }
 
-    @PostMapping(value = "/login")
-    public User login(@ModelAttribute("user") @Valid User user){
-
-    }
 }

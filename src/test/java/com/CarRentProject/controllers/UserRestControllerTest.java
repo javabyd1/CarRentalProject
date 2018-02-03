@@ -31,14 +31,19 @@ public class UserRestControllerTest {
 
     @Test
     public void shouldGetUsersList() throws Exception {
+
+
+       
+
         User newUser = new User();
       
+
         List<User> allUsers = Arrays.asList(newUser);
 
         given(usersService.getAllUsers()).willReturn(allUsers);
 
         this.mvc.perform(get("/users").accept(MediaType.APPLICATION_JSON_UTF8))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk()).andExpect(content().string("[{\"id\":null,\"name\":\"Adam\",\"lastname\":\"Kowalski\",\"password\":\"adamkowalski\",\"active\":0,\"userLogin\":\"AdamK\",\"rolesSet\":null,\"listCar\":null}]"));
     }
 
 }
