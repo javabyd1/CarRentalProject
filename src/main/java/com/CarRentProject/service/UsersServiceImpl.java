@@ -36,12 +36,7 @@ public class UsersServiceImpl implements UserService {
 
     @Override
     public User getUserByLoginAndPassword(String login, String password) {
-        User loggedUser = null;
-        loggedUser = userRepository.findByLoginAndPassword(login, password);
-        if (loggedUser != null) {
-            return loggedUser;
-        }
-        return loggedUser;
+        return userRepository.findByLoginAndPassword(login, password);
     }
 
 
