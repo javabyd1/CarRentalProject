@@ -12,21 +12,17 @@
 
     <h1>Lista samochodów</h1>
 
-    <table width="500">
+    <table class="table table-bordered table-hover">
         <tr>
             <th>Brand</th>
             <th>Model</th>
             <th>Year of production</th>
-            <th>Price</th>
-            <th>Rented?</th>
         </tr>
 
         <tr th:each="car : ${cars}">
             <td th:text="${car.getBrand()}"></td>
             <td th:text="${car.getModel()}"></td>
             <td th:text="${car.getYearOfProduction()}"></td>
-            <td th:text="${car.getPriceRentPerDay()}"></td>
-            <td th:text="${car.isRented()}"></td>
         </tr>
     </table>
 </div>
