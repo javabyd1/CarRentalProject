@@ -57,4 +57,10 @@ public class WebController {
         return mav;
     }
 
+    @RequestMapping(value = "users", method = RequestMethod.GET)
+    public ModelAndView users() {
+        ModelAndView mav = new ModelAndView("users");
+        mav.addObject("users", usersService.getAllUsers());
+        return mav;
+    }
 }
