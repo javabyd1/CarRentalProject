@@ -1,5 +1,6 @@
 package com.CarRentProject.controllers;
 
+import com.CarRentProject.models.Car;
 import com.CarRentProject.models.User;
 import com.CarRentProject.service.CarServiceImpl;
 import com.CarRentProject.service.UsersServiceImpl;
@@ -43,6 +44,21 @@ public class WebController {
         return "redirect:/users";
     }
 
+    @PostMapping("/save-car")
+    public String saveNewCar(@ModelAttribute("car") @Valid Car car) {
+        carsService.saveCar(car);
+        return "redirect:/cars";
+    }
+
+    @PostMapping("/login")
+    public String checkLoginData(@ModelAttribute("user") @Valid User user) {
+        User dbUser = usersService.getUserByLoginAndPassword(user.getLogin(), user.getPassword());
+        if (dbUser != null)
+            return "redirect:/login-ok";
+        else
+            return "redirect:/login-error";
+    }
+
 //    @GetMapping("/carsForRent")
 //    public ModelAndView showListOfCarsForRent() {
 //        ModelAndView modelAndView = new ModelAndView("carsForRent");
@@ -54,6 +70,7 @@ public class WebController {
     public ModelAndView cars() {
         ModelAndView mav = new ModelAndView("cars");
         mav.addObject("cars", carsService.getAllCars());
+        mav.addObject("car", new Car());
         return mav;
     }
 
