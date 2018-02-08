@@ -9,7 +9,7 @@ public interface UserService {
 
     List<User> getAllUsers();
     void saveUser(User user);
-    User getUsersByName(String name);
-    User getUserByLastName(String lastname);
+    User getUsersByFirstName(String firstName);
+    User getUserByLastName(String lastName);
     User getUserByLoginAndPassword(String login, String password);
 }

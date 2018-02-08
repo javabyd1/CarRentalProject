@@ -1,10 +1,16 @@
 package com.CarRentProject.models;
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
 import java.util.Set;
 
@@ -13,19 +19,17 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long id;
-    @NotEmpty(message = "Podaj imie")
-    private String name;
-    @NotEmpty(message = "Podaj nazwisko")
-    private String lastname;
-    @Length(min = 8, message = "Haslo powinno mieć min 8 znaków")
-    @NotEmpty(message = "Podaj haslo")
+    @Column(name = "login")
+    private String login;
+    @Column(name = "password")
     private String password;
-    private int active;
-
-    @NotNull
-    private String userLogin;
+    @Column(name = "first_name")
+    private String firstName;
+    @Column(name = "last_name")
+    private String lastName;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role",
@@ -39,21 +43,20 @@ public class User {
     public User() {
     }
 
-    public User(String name, String lastName, String password, int active, Set<Roles> rolesSet, List<Car> listCar, String userLogin) {
-        this.name = name;
-        this.lastname = lastName;
+    public User(String login, String password, String firstName, String lastName, Set<Roles> rolesSet, List<Car> listCar) {
+        this.login = login;
         this.password = password;
-        this.active = active;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.rolesSet = rolesSet;
         this.listCar = listCar;
-        this.userLogin = userLogin;
     }
 
-    public User(String name, String lastname, String password, String userLogin) {
-        this.name = name;
-        this.lastname = lastname;
+    public User(String login, String password, String firstName, String lastName) {
+        this.login = login;
         this.password = password;
-        this.userLogin = userLogin;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Long getId() {
@@ -64,20 +67,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getLogin() {
+        return login;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {
@@ -88,12 +83,20 @@ public class User {
         this.password = password;
     }
 
-    public int getActive() {
-        return active;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setActive(int active) {
-        this.active = active;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public Set<Roles> getRolesSet() {
@@ -110,13 +113,5 @@ public class User {
 
     public void setListCar(List<Car> listCar) {
         this.listCar = listCar;
-    }
-
-    public String getUserLogin() {
-        return userLogin;
-    }
-
-    public void setUserLogin(String userLogin) {
-        this.userLogin = userLogin;
     }
 }
