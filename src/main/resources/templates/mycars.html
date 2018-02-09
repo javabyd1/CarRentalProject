@@ -10,7 +10,7 @@
 <body>
 <div class="container">
 
-    <h1>Lista samochodów</h1>
+    <h1>Witaj <span th:text="${session.user.getLogin()}" ></span>, oto lista twoich samochodów</h1>
 
     <table class="table table-bordered table-hover">
         <tr>
@@ -19,29 +19,26 @@
             <th>Rok produkcji</th>
         </tr>
 
-        <tr th:each="car : ${cars}">
+        <tr th:each="car : ${userCars}">
             <td th:text="${car.getBrand()}"></td>
             <td th:text="${car.getModel()}"></td>
             <td th:text="${car.getYearOfProduction()}"></td>
         </tr>
     </table>
 
-    <h1>Dodaj nowy samochód</h1>
+    <h3>Wypożycz samochód</h3>
 
-    <form action="#" th:action="@{/save-car}" th:object="${car}" method="post">
+    <form action="#" th:action="@{/rent-car}" th:object="${car}" method="post">
         <div class="form-group">
-            <label for="inputBrand">Marka</label>
-            <input th:field="*{brand}" type="text" class="form-control" id="inputBrand" placeholder="Podaj markę" />
+            <label for="selectCar">Wybierz</label>
+            <select id="selectCar" class="form-control">
+                <option th:each="car : ${allCars}"
+                        th:value="${car}"
+                        th:text="${car.toString()}"></option>
+            </select>
         </div>
-        <div class="form-group">
-            <label for="inputModel">Model</label>
-            <input th:field="*{model}" type="text" class="form-control" id="inputModel" placeholder="Podaj model" />
-        </div>
-        <div class="form-group">
-            <label for="inputYear">Rok produkcji</label>
-            <input th:field="*{yearOfProduction}" type="text" class="form-control" id="inputYear" placeholder="Podaj rok produkcji" />
-        </div>
-        <button type="submit" class="btn btn-primary">Dodaj</button>
+
+        <button type="submit" class="btn btn-primary">Wypożycz</button>
     </form>
 </div>
 </body>

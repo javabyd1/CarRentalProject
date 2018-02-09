@@ -38,14 +38,4 @@ public class CarServiceImpl implements CarService {
     public Car getCarByYearOfProduction(int yearOfProduction) {
         return null;
     }
-
-    @Override
-    public Car getCarByPriceRentPerDay(int priceRentPerDay) {
-        return null;
-    }
-
-    @Override
-    public Car getCarByIsRented(boolean isRented) {
-        return null;
-    }
 }

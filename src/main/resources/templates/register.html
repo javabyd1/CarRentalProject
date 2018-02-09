@@ -10,15 +10,25 @@
 <body>
 <div class="container">
 
-    <h1>Register new user</h1>
+    <h1>Zarejestruj się</h1>
     <form action="#" th:action="@{/register}" th:object="${user}" method="post">
-        <label>First name: </label>
-        <p><input type="text" th:field="*{name}" /></p>
-        <label>Last name: </label>
-        <p><input type="text" th:field="*{lastname}" /></p>
-        <label>Password (min length = 8): </label>
-        <p><input type="password" th:field="*{password}" /></p>
-        <p><input type="submit" value="Register" /></p>
+        <div class="form-group">
+            <label for="inputLogin">login</label>
+            <input type="text" id="inputLogin" class="form-control" th:field="*{login}" placeholder="Podaj login" />
+        </div>
+        <div class="form-group">
+            <label for="inputFirstName">Imię</label>
+            <input type="text" id="inputFirstName" class="form-control" th:field="*{firstName}" placeholder="Podaj imię" />
+        </div>
+        <div class="form-group">
+            <label for="inputLastName">Nazwisko</label>
+            <input type="text" id="inputLastName" class="form-control" th:field="*{lastName}" placeholder="Podaj nazwisko" />
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">Hasło</label>
+            <input type="password" id="inputPassword" class="form-control" th:field="*{password}" placeholder="Podaj hasło" />
+        </div>
+        <input type="submit" class="btn btn-primary" value="Zarejestruj" />
     </form>
 </div>
 </body>

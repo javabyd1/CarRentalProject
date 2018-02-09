@@ -9,19 +9,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "car")
+@Table(name = "cars")
 public class Car {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "car_id")
     private int id;
-
+    @Column(name = "brand")
     private String brand;
+    @Column(name = "model")
     private String model;
+    @Column(name = "year_of_production")
     private int yearOfProduction;
-    private int priceRentPerDay;
-    private boolean isRented;
 
     @ManyToOne
     private User user;
@@ -29,12 +29,10 @@ public class Car {
     public Car() {
     }
 
-    public Car(String brand, String model, int yearOfProduction, int priceRentPerDay, boolean isRented) {
+    public Car(String brand, String model, int yearOfProduction) {
         this.brand = brand;
         this.model = model;
         this.yearOfProduction = yearOfProduction;
-        this.priceRentPerDay = priceRentPerDay;
-        this.isRented = isRented;
     }
 
     public int getId() {
@@ -69,27 +67,16 @@ public class Car {
         this.yearOfProduction = yearOfProduction;
     }
 
-    public int getPriceRentPerDay() {
-        return priceRentPerDay;
-    }
-
-    public void setPriceRentPerDay(int priceRentPerDay) {
-        this.priceRentPerDay = priceRentPerDay;
-    }
-
-    public boolean isRented() {
-        return isRented;
-    }
-
-    public void setRented(boolean rented) {
-        this.isRented = rented;
-    }
-
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return brand + " " + model + " (" + yearOfProduction +  ')';
     }
 }

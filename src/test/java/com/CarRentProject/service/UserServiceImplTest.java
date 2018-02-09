@@ -43,12 +43,12 @@ public class UserServiceImplTest {
     @Test
     public void shouldGetUserByName(){
         //given
-        User user = new User("Edek", "ABC", "pppppppp", "EkekABC");
+        User user = new User("andrzej", "123", "Andrzej", "Andrzejewski");
 
         //when
-        User result = usersService.getUsersByName("Andrzej");
+        User result = usersService.getUsersByFirstName("Andrzej");
 
         //then
-        BDDMockito.then(userRepository).should().findByName("Andrzej");
+        BDDMockito.then(userRepository).should().findByFirstName("Andrzej");
     }
 }

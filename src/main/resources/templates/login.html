@@ -10,13 +10,17 @@
 <body>
 <div class="container">
 
-    <h1>Zaloguj sie</h1>
+    <h1>Zaloguj się</h1>
     <form action="#" th:action="@{/login}" th:object="${user}" method="post">
-        <label>login</label>
-        <p><input type="text" th:field="*{name}" /></p>
-        <label>haslo</label>
-        <p><input type="text" th:field="*{lastname}" /></p>
-        <p><input type="submit" value="Login" /></p>
+        <div class="form-group">
+            <label for="inputLogin">Login</label>
+            <input type="text" th:field="*{login}" class="form-control" id="inputLogin" placeholder="Podaj login" />
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">Hasło</label>
+            <input type="password" th:field="*{password}" class="form-control" id="inputPassword" placeholder="Podaj hasło" />
+        </div>
+        <input type="submit" class="btn btn-primary" value="Zaloguj" />
     </form>
 </div>
 </body>
