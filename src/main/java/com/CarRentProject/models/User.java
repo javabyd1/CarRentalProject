@@ -38,18 +38,18 @@ public class User {
     private Set<Roles> rolesSet;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Car> listCar;
+    private List<Car> listOfCars;
 
     public User() {
     }
 
-    public User(String login, String password, String firstName, String lastName, Set<Roles> rolesSet, List<Car> listCar) {
+    public User(String login, String password, String firstName, String lastName, Set<Roles> rolesSet, List<Car> listOfCars) {
         this.login = login;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.rolesSet = rolesSet;
-        this.listCar = listCar;
+        this.listOfCars = listOfCars;
     }
 
     public User(String login, String password, String firstName, String lastName) {
@@ -107,11 +107,11 @@ public class User {
         this.rolesSet = rolesSet;
     }
 
-    public List<Car> getListCar() {
-        return listCar;
+    public List<Car> getListOfCars() {
+        return listOfCars;
     }
 
-    public void setListCar(List<Car> listCar) {
-        this.listCar = listCar;
+    public void setListOfCars(List<Car> listOfCars) {
+        this.listOfCars = listOfCars;
     }
 }
