@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Wypożyczalnia</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <h1>Witamy w wypożyczalni samochodów</h1>
+
+    <p>Lista dostępnych aut</p>
+
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Rok produkcji</th>
+        </tr>
+
+        <tr th:each="car : ${cars}">
+            <td th:text="${car.getBrand()}"></td>
+            <td th:text="${car.getModel()}"></td>
+            <td th:text="${car.getYearOfProduction()}"></td>
+        </tr>
+    </table>
+
+    <p><a href="/login">Zaloguj się</a> lub <a href="/register">załóż konto</a> aby wypożyczyć samochód!</p>
+
+</div>
+</body>
+</html>
