@@ -34,7 +34,7 @@ public class LoginController {
     @PostMapping("/login")
     public String checkLoginData(HttpSession session, @ModelAttribute("user") @Valid User loginData) {
         User user = usersService.getUserByLoginAndPassword(loginData.getLogin(), loginData.getPassword());
-        if (user != null) {
+        if (user != null ) {
             session.setAttribute("user", user);
             return "redirect:/my-cars";
         } else {
