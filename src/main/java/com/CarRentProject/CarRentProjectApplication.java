@@ -27,9 +27,9 @@ public class CarRentProjectApplication implements CommandLineRunner {
 		User admin = new User("admin", "123", "admin", "admin");
 		usersService.saveUser(admin);
 
-        Car audi = new Car("Audi", "A9", 2017);
+        Car audi = new Car("Audi", "A9", 2017, false);
         carService.saveCar(audi);
-        Car toyota = new Car("Toyota", "Corolla", 2014);
+        Car toyota = new Car("Toyota", "Corolla", 2014, false);
         carService.saveCar(toyota);
 	}
 }
