@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
-@SessionAttributes("user")
+@SessionAttributes()
 public class AdminPagesController {
 
     @Autowired
@@ -33,6 +33,11 @@ public class AdminPagesController {
         return "redirect:/cars";
     }
 
+    @GetMapping("/admin")
+    public ModelAndView showAdminPanel(){
+        ModelAndView mav = new ModelAndView("admin");
+        return mav;
+    }
 
     @GetMapping("/users")
     public ModelAndView users() {

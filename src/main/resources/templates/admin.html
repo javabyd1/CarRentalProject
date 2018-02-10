@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1>Panel Administratora</h1>
+<br>
+<form action="#" th:action="@{/users}">
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Wyświetl wszystkich użytkowników</button>
+    </div>
+</form>
+</br>
+<br>
+<form action="#" th:action="@{/cars}">
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Wyświetl wszystkie samochody</button>
+    </div>
+</form>
+</br>
+</body>
+</html>
