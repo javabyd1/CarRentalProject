@@ -3,14 +3,15 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Cars</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="container">
 
-    <h1>Witaj <span th:text="${session.user.getLogin()}" ></span>, oto lista twoich samochodów</h1>
+    <h1>Witaj <span th:text="${session.user.getLogin()}"></span>, w naszej wypożyczalni samochodów. Oto lista Twoich
+        wypożyczonych samochodów</h1>
 
     <table class="table table-bordered table-hover">
         <tr>
@@ -26,19 +27,8 @@
         </tr>
     </table>
 
-    <h3>Wypożycz samochód</h3>
-
-    <form action="#" th:action="@{/rent-car}" th:object="${car}" method="post">
-        <div class="form-group">
-            <label for="selectCar">Wybierz</label>
-            <select id="selectCar" class="form-control">
-                <option th:each="car : ${allCars}"
-                        th:value="${car}"
-                        th:text="${car.toString()}"></option>
-            </select>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Wypożycz</button>
+    <form action="#" th:action="@{/rent-cars}" method="get">
+        <input type="submit" class="btn btn-primary" value="Wypożycz samochód"/>
     </form>
 </div>
 </body>
