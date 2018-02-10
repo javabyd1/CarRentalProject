@@ -35,7 +35,7 @@ public class User {
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> rolesSet;
+    private Set<Roles> rolesSet;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Car> listOfCars;
@@ -43,7 +43,7 @@ public class User {
     public User() {
     }
 
-    public User(String login, String password, String firstName, String lastName, Set<Role> rolesSet, List<Car> listOfCars) {
+    public User(String login, String password, String firstName, String lastName, Set<Roles> rolesSet, List<Car> listOfCars) {
         this.login = login;
         this.password = password;
         this.firstName = firstName;
@@ -99,11 +99,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Set<Role> getRolesSet() {
+    public Set<Roles> getRolesSet() {
         return rolesSet;
     }
 
-    public void setRolesSet(Set<Role> rolesSet) {
+    public void setRolesSet(Set<Roles> rolesSet) {
         this.rolesSet = rolesSet;
     }
 
@@ -114,6 +114,4 @@ public class User {
     public void setListOfCars(List<Car> listOfCars) {
         this.listOfCars = listOfCars;
     }
-
-
 }
