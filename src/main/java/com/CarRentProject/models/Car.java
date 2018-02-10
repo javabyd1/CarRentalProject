@@ -22,6 +22,8 @@ public class Car {
     private String model;
     @Column(name = "year_of_production")
     private int yearOfProduction;
+    @Column
+    private boolean rented;
 
     @ManyToOne
     private User user;
@@ -29,10 +31,11 @@ public class Car {
     public Car() {
     }
 
-    public Car(String brand, String model, int yearOfProduction) {
+    public Car(String brand, String model, int yearOfProduction, boolean rented) {
         this.brand = brand;
         this.model = model;
         this.yearOfProduction = yearOfProduction;
+        this.rented = rented;
     }
 
     public int getId() {
@@ -73,6 +76,14 @@ public class Car {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public boolean isRented() {
+        return rented;
+    }
+
+    public void setRented(boolean rented) {
+        this.rented = rented;
     }
 
     @Override
