@@ -33,13 +33,18 @@ public class LoginController {
 
     @PostMapping("/login")
     public String checkLoginData(HttpSession session, @ModelAttribute("user") @Valid User loginData) {
-        User user = usersService.getUserByLoginAndPassword(loginData.getLogin(), loginData.getPassword());
+        User user = usersService.getUserByLoginAndPasswordAndRoles(loginData.getLogin(), loginData.getPassword(), loginData.getRoles());
         if (user != null) {
+            if("admin".equals(user.getRoles().getRole())){
+                return "redirect:/admin";
+            }
             session.setAttribute("user", user);
             return "redirect:/my-cars";
-        } else {
+        }
+        else {
             return "redirect:/login?error=user_not_found";
         }
+
     }
 
 }

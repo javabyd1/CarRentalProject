@@ -15,7 +15,7 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "car_id")
-    private int id;
+    private long id;
     @Column(name = "brand")
     private String brand;
     @Column(name = "model")
@@ -38,11 +38,11 @@ public class Car {
         this.rented = rented;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

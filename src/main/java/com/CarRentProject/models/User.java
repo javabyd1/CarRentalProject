@@ -1,16 +1,8 @@
 package com.CarRentProject.models;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.management.relation.Role;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Set;
 
@@ -22,6 +14,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long id;
+    @NotNull
     @Column(name = "login")
     private String login;
     @Column(name = "password")
@@ -31,11 +24,8 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Roles> rolesSet;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Roles roles;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Car> listOfCars;
@@ -43,20 +33,21 @@ public class User {
     public User() {
     }
 
-    public User(String login, String password, String firstName, String lastName, Set<Roles> rolesSet, List<Car> listOfCars) {
+    public User(String login, String password, String firstName, String lastName, Roles roles, List<Car> listOfCars) {
         this.login = login;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.rolesSet = rolesSet;
+        this.roles = roles;
         this.listOfCars = listOfCars;
     }
 
-    public User(String login, String password, String firstName, String lastName) {
+    public User(String login, String password, String firstName, String lastName, Roles roles) {
         this.login = login;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -99,12 +90,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Set<Roles> getRolesSet() {
-        return rolesSet;
+    public Roles getRoles() {
+        return roles;
     }
 
-    public void setRolesSet(Set<Roles> rolesSet) {
-        this.rolesSet = rolesSet;
+    public void setRoles(Roles roles) {
+        this.roles = roles;
     }
 
     public List<Car> getListOfCars() {
