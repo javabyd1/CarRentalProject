@@ -1,6 +1,7 @@
 package com.CarRentProject.service;
 
 import com.CarRentProject.interfaces.UserService;
+import com.CarRentProject.models.Roles;
 import com.CarRentProject.models.User;
 import com.CarRentProject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,10 @@ public class UsersServiceImpl implements UserService {
         return userRepository.findByLoginAndPassword(login, password);
     }
 
-
+    @Override
+    public User getUserByLoginAndPasswordAndRoles(String login, String password, Roles roles) {
+        return userRepository.findByLoginAndPasswordAndRoles(login, password, roles);
+    }
 }
 
 
