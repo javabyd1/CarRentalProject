@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface CarRepository extends JpaRepository<Car, Long> {
 
-    Car findById(Integer id);
+    Car findById(Long id);
     Car findAllByBrand(String brand);
     Car findAllByModel(String model);
     Car findAllByYearOfProduction(int yearOfProduction);

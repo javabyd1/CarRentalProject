@@ -1,18 +1,18 @@
 package com.CarRentProject.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Roles {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
-    private int id;
+    private Long id;
     private String role;
+
+    @OneToMany(mappedBy = "roles", cascade = CascadeType.ALL)
+    Set<User> setOfUsers;
 
     public Roles() {
     }
@@ -21,11 +21,11 @@ public class Roles {
         this.role = role;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -35,5 +35,9 @@ public class Roles {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Set<User> getSetOfUsers() {
+        return setOfUsers;
     }
 }

@@ -1,5 +1,6 @@
 package com.CarRentProject.service;
 
+import com.CarRentProject.models.Roles;
 import com.CarRentProject.models.User;
 import com.CarRentProject.repository.UserRepository;
 import org.assertj.core.api.Assertions;
@@ -10,6 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static org.assertj.core.api.Assertions.atIndex;
 import static org.assertj.core.api.BDDAssertions.then;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -43,7 +45,9 @@ public class UserServiceImplTest {
     @Test
     public void shouldGetUserByName(){
         //given
-        User user = new User("andrzej", "123", "Andrzej", "Andrzejewski");
+        Roles role = new Roles();
+        role.setRole("admin");
+        User user = new User("andrzej", "123", "Andrzej", "Andrzejewski", role);
 
         //when
         User result = usersService.getUsersByFirstName("Andrzej");

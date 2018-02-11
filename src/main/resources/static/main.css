@@ -1,0 +1,18 @@
+body
+{
+    width:100%;
+    margin:0 auto;
+    padding:0px;
+    background: #81DAF5 url(car.jpg) no-repeat fixed center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.container {
+    background-color: #FFFFFF;
+    border-radius: 25px;
+    padding: 20px;
+    margin-top: 50px;
+}
