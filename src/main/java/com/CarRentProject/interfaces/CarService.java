@@ -4,16 +4,11 @@ import com.CarRentProject.models.Car;
 
 import java.util.List;
 
-
 public interface CarService {
-
-    List<Car> getAllCars();
-
     void saveCar(Car car);
-
-    Car getCarbyBrand(String brand);
-
+    List<Car> getAllCars();
+    Car getCarById(Integer id);
+    Car getCarByBrand(String brand);
     Car getCarByModel(String model);
-
     Car getCarByYearOfProduction(int yearOfProduction);
 }

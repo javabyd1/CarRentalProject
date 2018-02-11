@@ -28,12 +28,12 @@
 
     <h3>Wypożycz samochód</h3>
 
-    <form action="#" th:action="@{/rent-cars}" th:object="${car}" method="post">
+    <form action="#" th:action="@{/rent-cars}" th:object="${carToRent}" method="post">
         <div class="form-group">
             <label for="selectCar">Wybierz</label>
-            <select id="selectCar" class="form-control">
+            <select id="selectCar" class="form-control" th:field="${carToRent.id}">
                 <option th:each="car : ${availableCars}"
-                        th:value="${car}"
+                        th:value="${car.id}"
                         th:text="${car.toString()}"></option>
             </select>
         </div>

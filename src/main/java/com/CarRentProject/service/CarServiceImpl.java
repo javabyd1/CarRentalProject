@@ -15,17 +15,22 @@ public class CarServiceImpl implements CarService {
     CarRepository carRepository;
 
     @Override
-    public List<Car> getAllCars() {
-        return carRepository.findAll();
-    }
-
-    @Override
     public void saveCar(Car car) {
         carRepository.save(car);
     }
 
     @Override
-    public Car getCarbyBrand(String brand) {
+    public List<Car> getAllCars() {
+        return carRepository.findAll();
+    }
+
+    @Override
+    public Car getCarById(Integer id) {
+        return carRepository.findById(id);
+    }
+
+    @Override
+    public Car getCarByBrand(String brand) {
         return null;
     }
 
