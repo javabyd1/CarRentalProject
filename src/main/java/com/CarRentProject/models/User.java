@@ -24,7 +24,8 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "role_id")
     private Roles roles;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
