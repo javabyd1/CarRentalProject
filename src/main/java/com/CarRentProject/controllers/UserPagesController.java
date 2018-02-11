@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 @SessionAttributes("user")
@@ -59,7 +58,7 @@ public class UserPagesController {
         User loggedUser = (User) session.getAttribute("user");
         loggedUser = usersService.getUserByLoginAndPassword(loggedUser.getLogin(), loggedUser.getPassword());
 
-        Car carToRent = carsService.getCarById( Integer.parseInt( formParams.getFirst("id") ) );
+        Car carToRent = carsService.getCarById(Long.parseLong(formParams.getFirst("id")));
         carToRent.setUser(loggedUser);
         carsService.saveCar(carToRent);
 
