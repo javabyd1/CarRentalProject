@@ -8,16 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @SessionAttributes("user")
@@ -50,10 +47,9 @@ public class UserPagesController {
     }
 
     @GetMapping("/rent-cars")
-    public ModelAndView listOfCarsToRent(HttpSession session) {
-        User user = (User) session.getAttribute("user");
+    public ModelAndView listOfCarsToRent() {
         ModelAndView mav = new ModelAndView("rentcars");
-        mav.addObject("availableCars", carsService.getAllCars());
+        mav.addObject("availableCars", carsService.getAllCarsByUser(null));
         mav.addObject("carToRent", new Car());
         return mav;
     }
@@ -61,10 +57,9 @@ public class UserPagesController {
     @PostMapping("/rent-cars")
     public String rentCar(HttpSession session, @RequestBody MultiValueMap<String, String> formParams) {
         User loggedUser = (User) session.getAttribute("user");
-
         loggedUser = usersService.getUserByLoginAndPassword(loggedUser.getLogin(), loggedUser.getPassword());
-        Car carToRent = carsService.getCarById( Integer.parseInt(formParams.getFirst("id")) );
 
+        Car carToRent = carsService.getCarById( Integer.parseInt( formParams.getFirst("id") ) );
         carToRent.setUser(loggedUser);
         carsService.saveCar(carToRent);
 

@@ -2,6 +2,7 @@ package com.CarRentProject.service;
 
 import com.CarRentProject.interfaces.CarService;
 import com.CarRentProject.models.Car;
+import com.CarRentProject.models.User;
 import com.CarRentProject.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,5 +43,10 @@ public class CarServiceImpl implements CarService {
     @Override
     public Car getCarByYearOfProduction(int yearOfProduction) {
         return null;
+    }
+
+    @Override
+    public List<Car> getAllCarsByUser(User user) {
+        return carRepository.findAllByUser(user);
     }
 }

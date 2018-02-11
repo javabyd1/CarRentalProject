@@ -1,6 +1,7 @@
 package com.CarRentProject.interfaces;
 
 import com.CarRentProject.models.Car;
+import com.CarRentProject.models.User;
 
 import java.util.List;
 
@@ -11,4 +12,5 @@ public interface CarService {
     Car getCarByBrand(String brand);
     Car getCarByModel(String model);
     Car getCarByYearOfProduction(int yearOfProduction);
+    List<Car> getAllCarsByUser(User user);
 }
