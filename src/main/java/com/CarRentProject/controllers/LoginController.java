@@ -33,7 +33,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public String checkLoginData(HttpSession session, @ModelAttribute("user") @Valid User loginData) {
-        User user = usersService.getUserByLoginAndPasswordAndRoles(loginData.getLogin(), loginData.getPassword(), loginData.getRoles());
+        User user = usersService.getUserByLoginAndPassword(loginData.getLogin(), loginData.getPassword());
         if (user != null) {
             if("admin".equals(user.getRoles().getRole())){
                 return "redirect:/admin";
