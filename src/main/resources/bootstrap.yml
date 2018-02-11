@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: car-rental-project
+  cloud:
+    config:
+      env: default
+      uri: http://localhost:8889
